@@ -1,47 +1,51 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-<head>
-  <meta charset="UTF-8">
-  <title>词云生成器</title>
-  <script src="src/echarts.js"></script>
-  <script src="src/echarts-wordcloud.js"></script>
-  <script src="src/make-wordcloud.js"></script>
-  <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/xlsx/0.18.2/xlsx.full.min.js"></script>
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>词云生成器</title>
+    <script src="src/echarts.js"></script>
+    <script src="src/echarts-wordcloud.js"></script>
+    <script src="src/make-wordcloud.js"></script>
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/xlsx/0.18.2/xlsx.full.min.js"></script>
+  </head>
+  <body>
     <input type="file" id="excelFile" accept=".xlsx" />
-    <br>
-    <br>
+    <br />
+    <br />
     <button id="submitBtn">生成词云</button>
-    <div id="chart" style="width: 800px;height: 600px;"></div>
+    <div id="chart" style="width: 800px; height: 600px"></div>
     <script>
-        document.getElementById('submitBtn').addEventListener('click', function() {
-            var fileInput = document.getElementById('excelFile');
-            var file = fileInput.files[0];
+      document
+        .getElementById("submitBtn")
+        .addEventListener("click", function () {
+          var fileInput = document.getElementById("excelFile");
+          var file = fileInput.files[0];
 
-            if (!file) {
-                alert('请先选择一个Excel文件！');
-                return;
-            }
+          if (!file) {
+            alert("请先选择一个Excel文件！");
+            return;
+          }
 
-            var reader = new FileReader();
-            reader.readAsArrayBuffer(file);
+          var reader = new FileReader();
+          reader.readAsArrayBuffer(file);
 
-            reader.onload = function(e) {
-                var data = new Uint8Array(e.target.result);
-                var workbook = XLSX.read(data, {type: 'array'});
+          reader.onload = function (e) {
+            var data = new Uint8Array(e.target.result);
+            var workbook = XLSX.read(data, { type: "array" });
 
-                var sheetName = workbook.SheetNames[0]; // 读取第一个工作表
-                var sheet = workbook.Sheets[sheetName];
+            var sheetName = workbook.SheetNames[0]; // 读取第一个工作表
+            var sheet = workbook.Sheets[sheetName];
 
-                var jsonArray = XLSX.utils.sheet_to_json(sheet); // 转换为JSON数组
-                draw_wordcloud(jsonArray);
-                // document.getElementById('chart').textContent = JSON.stringify(jsonArray, null, 2);
-            };
+            var jsonArray = XLSX.utils.sheet_to_json(sheet); // 转换为JSON数组
+            draw_wordcloud(jsonArray);
+            // document.getElementById('chart').textContent = JSON.stringify(jsonArray, null, 2);
+          };
 
-            reader.onerror = function(ex) {
-                console.log(ex);
-            };
+          reader.onerror = function (ex) {
+            console.log(ex);
+          };
         });
     </script>
-</body>
+  </body>
+</html>

@@ -8,13 +8,46 @@
     <script src="src/echarts-wordcloud.js"></script>
     <script src="src/make-wordcloud.js"></script>
     <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/xlsx/0.18.2/xlsx.full.min.js"></script>
+    <style>
+      table {
+        border-collapse: collapse;
+        border-spacing: 1;
+        border: 1px solid;
+      }
+      th,
+      td {
+        border: 1px solid;
+      }
+    </style>
   </head>
   <body>
     <input type="file" id="excelFile" accept=".xlsx" />
     <br />
     <br />
     <button id="submitBtn">生成词云</button>
+    <br />
+    <br />
     <div id="chart" style="width: 800px; height: 600px"></div>
+    <hr
+      style="filter: alpha(opacity=100, finishopacity=0, style=3)"
+      width="100%"
+      color="#987cb9"
+      size="3"
+    />
+    <div>
+      <a target="_blank" href="./data.xlsx">下载模板</a>
+    </div>
+    <ul>
+      模板说明：
+      <li>word：填写需要展示的词</li>
+      <li>weight：填写词对应的词频</li>
+      <li>
+        color：若需要对词设置对应颜色，填写16进制颜色码，默认由系统随机指定
+      </li>
+    </ul>
+    <div>
+      <a target="_blank" href="./rgb.html">常见颜色速查</a>
+    </div>
     <script>
       document
         .getElementById("submitBtn")

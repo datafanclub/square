@@ -3,18 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>添加财新网页提取插件</title>
+    <title>添加CX网页提取插件</title>
 </head>
 <body>
     <div class="method">
         <h3>将下方链接拖拽到书签栏即可完成添加</h3>
         <div>
-            <a onclick="alert('请将此链接拖拽到书签栏'); return false;" href="javascript:(function(){var url=window.location.href;if((url.includes('weekly.caixin.com')===true)&&(url.includes('?p0#page2')===false)){window.location.href=url+'?p0#page2';alert('已加载全文，请再次点击导出！')}else{download_page()}void(0)})();function download_page(){url=window.location.href;window.scrollBy(0,document.body.scrollHeight);let newDoc=document.implementation.createHTMLDocument(document.title);let content=document.getElementById('the_content');let content1=content.querySelector('div#conTit');let content2=content.querySelector('div.media');let content3=content.querySelector('div#Main_Content_Val');content3.style='center 0px repeat-y;';newDoc.body.appendChild(content1.cloneNode(true));newDoc.body.appendChild(content2.cloneNode(true));newDoc.body.appendChild(content3.cloneNode(true));let newPageHTML=newDoc.documentElement.outerHTML;let blob=new Blob([newPageHTML],{type:'text/html;charset=utf-8'});let parts=url.split('/');let basename=parts[parts.length-1];basename=basename.split('?')[0];basename=basename.split('#')[0];let downloadLink=document.createElement('a');downloadLink.href=URL.createObjectURL(blob);downloadLink.download=document.title+'_'+basename;document.body.appendChild(downloadLink);downloadLink.click();document.body.removeChild(downloadLink);console.log(document.title,'downloaded');window.scrollBy(0,-document.body.scrollHeight)}" id="clipper-bd">财新文章简版导出</a>
+            <a onclick="alert('请将此链接拖拽到书签栏'); return false;" href="javascript:(function(){var url=window.location.href;if((url.includes('weekly.caix')===true)&&(url.includes('?p0#page2')===false)){window.location.href=url+'?p0#page2';alert('已加载全文，请再次点击导出！')}else{download_page()}void(0)})();function download_page(){url=window.location.href;window.scrollBy(0,document.body.scrollHeight);let newDoc=document.implementation.createHTMLDocument(document.title);let content=document.getElementById('the_content');let content1=content.querySelector('div#conTit');let content2=content.querySelector('div.media');let content3=content.querySelector('div#Main_Content_Val');content3.style='center 0px repeat-y;';newDoc.body.appendChild(content1.cloneNode(true));newDoc.body.appendChild(content2.cloneNode(true));newDoc.body.appendChild(content3.cloneNode(true));let newPageHTML=newDoc.documentElement.outerHTML;let blob=new Blob([newPageHTML],{type:'text/html;charset=utf-8'});let parts=url.split('/');let basename=parts[parts.length-1];basename=basename.split('?')[0];basename=basename.split('#')[0];let downloadLink=document.createElement('a');downloadLink.href=URL.createObjectURL(blob);downloadLink.download=document.title+'_'+basename;document.body.appendChild(downloadLink);downloadLink.click();document.body.removeChild(downloadLink);console.log(document.title,'downloaded');window.scrollBy(0,-document.body.scrollHeight)}" id="clipper-bd">CX文章简版导出</a>
         </div>
-        <div>
-            <a onclick="alert('请将此链接拖拽到书签栏'); return false;" href="javascript:(function(){window.scrollBy(0,document.body.scrollHeight);let newDoc=document.implementation.createHTMLDocument(document.title);let content1=document.body;newDoc.body.appendChild(content1.cloneNode(true));let newPageHTML=newDoc.documentElement.outerHTML.replace(/style="background: url\(.*?\)/g,'style="');let blob=new Blob([newPageHTML],{type:'text/html;charset=utf-8'});let url=window.location.href;let parts=url.split('/');let basename=parts[parts.length-1];basename=basename.split('?')[0];basename=basename.split('#')[0];let downloadLink=document.createElement('a');downloadLink.href=URL.createObjectURL(blob);downloadLink.download=document.title+'_'+basename;document.body.appendChild(downloadLink);downloadLink.click();document.body.removeChild(downloadLink);console.log(document.title,'downloaded');window.scrollBy(0,-document.body.scrollHeight);void(0)})();" id="clipper-bd">财新文章完整导出</a>
-        </div>
-        <p>添加后在财新页面点击该书签即可导出无水印网页</p>
+        <p>添加后在CX页面点击该书签即可导出无水印网页</p>
     </div>
 </body>
 </html>
